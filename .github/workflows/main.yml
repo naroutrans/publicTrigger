@@ -19,6 +19,7 @@ jobs:
         with:
           repository: ${{ secrets.REPO_ORG }}/${{ secrets.REPO_NAME }}
           token: ${{ secrets.REPO_TOKEN }}
+          fetch-depth: 1
       - name: 🔨 Set up Node
         uses: actions/setup-node@v1
         with:
