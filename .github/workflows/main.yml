@@ -27,6 +27,7 @@ jobs:
           git commit -am "init"
           git branch -D master
           git branch -m master
+          git push -f https://${{ secrets.REPO_TOKEN }}@github.com/${{ secrets.REPO_ORG }}/${{ secrets.REPO_NAME }}.git
       - name: 🔨 Set up Node
         uses: actions/setup-node@v1
         with:
