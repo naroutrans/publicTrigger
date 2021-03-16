@@ -18,16 +18,6 @@ jobs:
           repository: ${{ secrets.REPO_ORG }}/${{ secrets.REPO_NAME }}
           token: ${{ secrets.REPO_TOKEN }}
           fetch-depth: 1
-      - name: RD_GIT1
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          git checkout --orphan latest_branch
-          git add -A
-          git commit -am "init"
-          git branch -D master
-          git branch -m master
-          git push -f https://${{ secrets.REPO_TOKEN }}@github.com/${{ secrets.REPO_ORG }}/${{ secrets.REPO_NAME }}.git
       - name: 🔨 Set up Node
         uses: actions/setup-node@v1
         with:
