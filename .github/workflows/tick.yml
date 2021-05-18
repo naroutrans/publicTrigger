@@ -26,3 +26,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: tick!
         run: echo $(date) > lastTick.txt
+        
+      - uses: EndBug/add-and-commit@v7
+        with:
+          message: 'Add tick file'
+          add: '*.txt --force'
