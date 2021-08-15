@@ -45,6 +45,7 @@ jobs:
           if [ -d "docs" ]; then
             rm -rf docs/*
           fi
+          mkdir docs
       - name: 🍳 Build site
         run: hugo ${HUGO_ARGS:-""} -d ${DEST:-"docs"}
       - name: DO PostProcess2
