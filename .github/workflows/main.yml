@@ -52,6 +52,8 @@ jobs:
         run: java -jar .github/action/HN_PostProcessing.jar
       - name: DO DocsZipAndUpload
         run: java -jar .github/action/HN_DocsZipAndUpload.jar
+      - name: Copy sitemap
+        run: cp /docs/sitemap.xml /sitemap.xml
       - name: 🚀 Deploy build
         run: |
           git config user.name "${GITHUB_ACTOR}"
