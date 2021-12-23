@@ -52,6 +52,11 @@ jobs:
         run: java -jar .github/action/HN_PostProcessing.jar
       - name: DO DocsZipAndUpload
         run: java -jar .github/action/HN_DocsZipAndUpload.jar
+      - name: debug size
+        run: |
+          cd /home/runner/work/publicTrigger/publicTrigger/
+          ls -al
+          df -h
       - name: Copy sitemap
         run: cp ./docs/sitemap.xml ./sitemap.xml
       - name: 🚀 Deploy build
