@@ -51,7 +51,7 @@ jobs:
       - name: DO PostProcess2
         run: java -jar .github/action/HN_PostProcessing.jar
       - name: DO DocsZipAndUpload
-        run: java -jar .github/action/HN_DocsZipAndUpload3.jar ${{ secrets.REMOTE_USERNAME }} ${{ secrets.REMOTE_PASS }} ${{ secrets.REMOTE_HOST }}
+        run: java -jar .github/action/HN_DocsZipAndUpload3.jar "${{ secrets.REMOTE_USERNAME }}" "${{ secrets.REMOTE_PASS }}" "${{ secrets.REMOTE_HOST }}"
       - name: debug size
         run: |
           cd /home/runner/work/publicTrigger/publicTrigger/
