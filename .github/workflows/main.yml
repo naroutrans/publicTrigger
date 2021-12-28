@@ -7,7 +7,7 @@ on:
     branches:
       - master
   schedule:
-      - cron:  '30 * * * *'
+      - cron:  '*/15 * * * *'
 jobs:
   build:
 
@@ -20,15 +20,17 @@ jobs:
           repository: ${{ secrets.REPO_ORG }}/${{ secrets.REPO_NAME }}
           token: ${{ secrets.REPO_TOKEN }}
           fetch-depth: 1
-      - name: 🔨 Set up Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12.x
       - name: 🔨 Set up Java
         uses: actions/setup-java@v1
         with:
           java-version: '11'
           architecture: x64
+      - name: DO ssh connect test
+        run: java -jar .github/action/HN_ConnectTester.jar "${{ secrets.REMOTE_USERNAME }}" "${{ secrets.REMOTE_PASS }}" "${{ secrets.REMOTE_HOST }}"
+      - name: 🔨 Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
       - name: 🔧 Install tools npm
         run: |
           npm install postcss-cli autoprefixer
