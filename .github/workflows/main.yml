@@ -50,8 +50,6 @@ jobs:
         run: hugo ${HUGO_ARGS:-""} -d ${DEST:-"docs"}
       - name: DO PostProcess2
         run: java -jar .github/action/HN_PostProcessing.jar
-      - name: DO DocsZipAndUpload
-        run: java -jar .github/action/HN_DocsZipAndUpload3.jar
       - name: debug size
         run: |
           cd /home/runner/work/publicTrigger/publicTrigger/
