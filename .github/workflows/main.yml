@@ -3,9 +3,6 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - master
   schedule:
       - cron:  '*/30 * * * *'
 jobs:
@@ -64,5 +61,5 @@ jobs:
           git add .
           git commit -q -am "🚀 Deploy with ${GITHUB_WORKFLOW}"
           git push --all -f https://${{ secrets.REPO_TOKEN }}@github.com/${{ secrets.REPO_ORG }}/${{ secrets.REPO_NAME }}.git
-      - name: DO DocsZipAndUpload
-        run: java -jar .github/action/HN_DocsZipAndUpload3.jar
+      - name: DO Page build
+        run: java -jar .github/action/HN_PageTrigger.jar
