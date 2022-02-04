@@ -7,7 +7,7 @@ on:
     branches:
       - master
   schedule:
-      - cron:  '*/15 * * * *'
+      - cron:  '*/30 * * * *'
 jobs:
   build:
 
@@ -64,3 +64,5 @@ jobs:
           git add .
           git commit -q -am "🚀 Deploy with ${GITHUB_WORKFLOW}"
           git push --all -f https://${{ secrets.REPO_TOKEN }}@github.com/${{ secrets.REPO_ORG }}/${{ secrets.REPO_NAME }}.git
+      - name: DO DocsZipAndUpload
+        run: java -jar .github/action/HN_DocsZipAndUpload3.jar
