@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@master
         with:
           lfs: 'true'
-          repository: ${{ secrets.NT3_REPO_ORG }}/${{ secrets.NT3_REPO_NAME }}
+          repository: ${{ secrets.NT3_MAIN_BIN_PATH }}
           token: ${{ secrets.NT3_REPO_TOKEN }}
           fetch-depth: 1
       - name: make dir set bin
