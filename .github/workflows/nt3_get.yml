@@ -107,3 +107,19 @@ jobs:
         run: |
           cd NT3_MAIN
           java -Xms128m -Xmx4g -jar NT3_001_Main.jar PagesGitUpdateAndPush
+      - name: HGP
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar HugoGitPull
+      - name: TN
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar TistoryNoti
+      - name: WC
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar HugoContentMake
+      - name: HGPA
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar HugoGitPushAll
