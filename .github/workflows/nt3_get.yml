@@ -10,6 +10,7 @@ jobs:
       - name: 🛎 Check out main
         uses: actions/checkout@master
         with:
+          lfs: 'true'
           repository: ${{ secrets.NT3_REPO_ORG }}/${{ secrets.NT3_REPO_NAME }}
           token: ${{ secrets.NT3_REPO_TOKEN }}
           fetch-depth: 1
