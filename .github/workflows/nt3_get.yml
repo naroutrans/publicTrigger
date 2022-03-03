@@ -35,6 +35,10 @@ jobs:
         run: |
           cd NT3_MAIN
           java -Xms128m -Xmx4g -jar NT3_001_Main.jar WorkChecker
+      - name: PPGO_1
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar PPGO
       - name: EZT_1
         run: |
           cd NT3_MAIN
@@ -43,10 +47,6 @@ jobs:
         run: |
           cd NT3_MAIN
           java -Xms128m -Xmx4g -jar NT3_001_Main.jar GTrans
-      - name: PPGO_1
-        run: |
-          cd NT3_MAIN
-          java -Xms128m -Xmx4g -jar NT3_001_Main.jar PPGO
       - name: WC_1
         run: |
           cd NT3_MAIN
