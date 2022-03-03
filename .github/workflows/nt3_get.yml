@@ -1,0 +1,108 @@
+name: NT3_GET
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-2019
+    steps:
+      - name: 🛎 Check out main
+        uses: actions/checkout@master
+        with:
+          repository: ${{ secrets.NT3_REPO_ORG }}/${{ secrets.NT3_REPO_NAME }}
+          token: ${{ secrets.NT3_REPO_TOKEN }}
+          fetch-depth: 1
+      - name: make dir set bin
+        run: |
+          mkdir NT3_REPO
+          7z  x -p${{ secrets.NT3_ZIP_PASS }} bin.7z
+          ren NT3_MAIN_TEMP NT3_MAIN
+      - name: debug dir
+        run: |
+          cd NT3_MAIN
+          ls
+      - name: NPC
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar NewPageChecker
+      - name: PG
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar PageGetter
+      - name: WC
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar WorkChecker
+      - name: EZT_1
+        run: |
+          cd HB3_MAIN
+          .\source\EzTransXpTranslator\EzTransXpTranslator1\EzTransXpTranslator1\bin\x86\Release\EzTransXpTranslator1.exe
+      - name: GT_1
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar GTrans
+      - name: PPGO_1
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar PPGO
+      - name: WC_1
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar WorkChecker
+      - name: EZT_2
+        run: |
+          cd HB3_MAIN
+          .\source\EzTransXpTranslator\EzTransXpTranslator1\EzTransXpTranslator1\bin\x86\Release\EzTransXpTranslator1.exe
+      - name: GT_2
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar GTrans
+      - name: PPGO_2
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar PPGO
+      - name: WC_2
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar WorkChecker
+      - name: EZT_3
+        run: |
+          cd HB3_MAIN
+          .\source\EzTransXpTranslator\EzTransXpTranslator1\EzTransXpTranslator1\bin\x86\Release\EzTransXpTranslator1.exe
+      - name: GT_3
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar GTrans
+      - name: PPGO_3
+        run: |
+          cd NT3_MAIN
+          .\source\PapagoWebTrans-win32-ia32\PapagoWebTrans.exe
+      - name: WC_3
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar WorkChecker
+      - name: J2T
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar Json2Txt
+      - name: WC_4
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar WorkChecker
+      - name: CWD
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar CheckWorkDone
+      - name: ZPM
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar ZipPagesMake
+      - name: PGP
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar PagesGitPull
+      - name: PGUAP
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar PagesGitUpdateAndPush
