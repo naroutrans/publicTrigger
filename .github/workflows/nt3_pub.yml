@@ -33,7 +33,7 @@ jobs:
           java -Xms128m -Xmx4g -jar NT3_001_Main.jar TistoryNoti
       - name: WC
         run: |
-          cd HCM
+          cd NT3_MAIN
           java -Xms128m -Xmx4g -jar NT3_001_Main.jar HugoContentMake
       - name: HGPA
         run: |
