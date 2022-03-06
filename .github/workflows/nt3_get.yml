@@ -1,6 +1,8 @@
 name: NT3_GET
 
 on:
+  schedule:
+      - cron:  '0 22 * * *'
   workflow_dispatch:
 
 jobs:
