@@ -19,7 +19,7 @@ jobs:
       - name: make dir set bin
         run: |
           mkdir NT3_REPO
-          7z  x -p${{ secrets.NT3_ZIP_PASS }} bin.7z
+          7z  x -p${{ secrets.NT3_ZIP_PASS }} bin.7z.001
           ren NT3_MAIN_TEMP NT3_MAIN
       - name: debug dir
         run: |
