@@ -63,3 +63,5 @@ jobs:
           git push --all -f https://${{ secrets.REPO_TOKEN }}@github.com/${{ secrets.REPO_ORG }}/${{ secrets.REPO_NAME }}.git
       - name: DO Page build
         run: java -jar .github/action/HN_PageTrigger.jar
+      - name: tree docs
+        run: tree ./docs/
