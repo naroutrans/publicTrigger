@@ -65,5 +65,5 @@ jobs:
         run: java -jar .github/action/HN_PageTrigger.jar
       - name: count files
         run: |
-          cd ./docs/
+          cd /home/runner/work/publicTrigger/publicTrigger/docs/
           ls | wc -l
