@@ -46,12 +46,7 @@ jobs:
       - name: 🍳 Build site
         run: hugo ${HUGO_ARGS:-""} -d ${DEST:-"docs"}
       - name: DO PostProcess2
-        run: java -jar .github/action/HN_PostProcessing.jar
-      - name: debug size
-        run: |
-          cd /home/runner/work/publicTrigger/publicTrigger/
-          ls -al
-          df -h
+        run: java -jar .github/action/NT3_WEB_PostProcessing.jar
       - name: Copy sitemap
         run: cp ./docs/sitemap.xml ./sitemap.xml
       - name: 🚀 Deploy build
@@ -63,7 +58,3 @@ jobs:
           git push --all -f https://${{ secrets.REPO_TOKEN }}@github.com/${{ secrets.REPO_ORG }}/${{ secrets.REPO_NAME }}.git
       - name: DO Page build
         run: java -jar .github/action/HN_PageTrigger.jar
-      - name: count files
-        run: |
-          cd /home/runner/work/publicTrigger/publicTrigger/docs/
-          ls | wc -l
