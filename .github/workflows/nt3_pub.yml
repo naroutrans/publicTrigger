@@ -32,10 +32,14 @@ jobs:
         run: |
           cd NT3_MAIN
           java -Xms128m -Xmx4g -jar NT3_001_Main.jar TistoryNoti
-      - name: WC
+      - name: HCM
         run: |
           cd NT3_MAIN
           java -Xms128m -Xmx4g -jar NT3_001_Main.jar HugoContentMake
+      - name: HCU
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar HugoCategoryUpdater
       - name: HGPA
         run: |
           cd NT3_MAIN
