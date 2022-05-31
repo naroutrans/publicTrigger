@@ -1,6 +1,10 @@
 name: NT3_PUB
 
-
+on:
+  schedule:
+      - cron:  '0 22 * * *'
+  workflow_dispatch:
+  
 jobs:
   build:
     runs-on: windows-2019
