@@ -1,5 +1,10 @@
 name: NT3_GET
 
+on:
+  schedule:
+      - cron:  '0 */6 * * *'
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: windows-2019
