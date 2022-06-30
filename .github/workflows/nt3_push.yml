@@ -1,0 +1,63 @@
+# This is a basic workflow to help you get started with Actions
+
+name: NT3_PUSH
+
+on:
+  schedule:
+      - cron:  '*/30 * * * *'
+      
+  workflow_dispatch:
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛎 Check out main
+        uses: actions/checkout@master
+        with:
+          repository: ${{ secrets.REPO_ORG }}/${{ secrets.REPO_NAME }}
+          token: ${{ secrets.REPO_TOKEN }}
+          fetch-depth: 1
+      - name: 🔨 Set up Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: '11'
+          architecture: x64
+      - name: 🔨 Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: 🔧 Install tools npm
+        run: |
+          npm install postcss-cli autoprefixer
+      - name: 🤵 Install Hugo
+        run: |
+          mkdir tmp/ && cd tmp/
+          curl -sSL https://github.com/gohugoio/hugo/releases/download/v0.81.0/hugo_extended_0.81.0_Linux-64bit.tar.gz | tar -xvzf-
+          sudo mv hugo /usr/local/bin/
+          cd .. && rm -rf tmp/
+          hugo version
+      - name: 🧹 Clean site
+        run: |
+          if [ -d "docs" ]; then
+            rm -rf docs/*
+          fi
+          mkdir docs
+      - name: 🍳 Build site
+        run: hugo ${HUGO_ARGS:-""} -d ${DEST:-"docs"}
+      - name: DO PostProcess2
+        run: java -jar .github/action/NT3_WEB_PostProcessing.jar
+      - name: Copy sitemap
+        run: cp ./docs/sitemap.xml ./sitemap.xml
+      - name: zip docs
+        run: |
+          cd ./docs/
+          zip -r docs.zip .
+      - name: upload zips
+        run: |
+          cd ./docs/
+          curl -H "Content-Type: application/zip" \
+          -H "Authorization: ${{ secrets.NT3_NETLI_TOKEN }}" \
+          --data-binary "@docs.zip" \
+          ${{ secrets.NT3_NETLI_URL }}
