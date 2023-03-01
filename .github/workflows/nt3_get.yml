@@ -36,6 +36,11 @@ jobs:
         run: |
           cd NT3_MAIN
           java -Xms128m -Xmx4g -jar NT3_001_Main.jar WorkChecker
+      - name: DL_1
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar DEEPL
+        continue-on-error: true
       - name: PPGO_1
         run: |
           cd NT3_MAIN
@@ -70,6 +75,11 @@ jobs:
           cd NT3_MAIN
           java -Xms128m -Xmx4g -jar NT3_001_Main.jar PPGO
         continue-on-error: true
+      - name: DL_2
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar DEEPL
+        continue-on-error: true
       - name: WC_2
         run: |
           cd NT3_MAIN
@@ -82,10 +92,11 @@ jobs:
         run: |
           cd NT3_MAIN
           java -Xms128m -Xmx4g -jar NT3_001_Main.jar GTrans
-      - name: PPGO_3
+      - name: DL_3
         run: |
           cd NT3_MAIN
-          .\source\PapagoWebTrans-win32-ia32\PapagoWebTrans.exe
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar DEEPL
+        continue-on-error: true
       - name: WC_3
         run: |
           cd NT3_MAIN
