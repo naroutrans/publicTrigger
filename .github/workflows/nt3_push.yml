@@ -57,14 +57,15 @@ jobs:
           git add .
           git commit -q -am "🚀 Deploy with ${GITHUB_WORKFLOW}"
           git push --all -f https://${{ secrets.REPO_TOKEN }}@github.com/${{ secrets.REPO_ORG }}/${{ secrets.REPO_NAME }}.git
-      - name: zip docs
-        run: |
-          cd ./docs/
-          zip -r docs.zip .
-      - name: upload zips
-        run: |
-          cd ./docs/
-          curl -H "Content-Type: application/zip" \
-          -H "Authorization: ${{ secrets.NT3_NETLI_TOKEN }}" \
-          --data-binary "@docs.zip" \
-          ${{ secrets.NT3_NETLI_URL }}
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2
+        with:
+          publish-dir: './docs'
+          production-branch: master
+          deploy-message: "Deploy from GitHub Actions"
+          enable-pull-request-comment: false
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NT3_NETLI_TOKEN2 }}
+          NETLIFY_SITE_ID: ${{ secrets.NT3_NETLI_SITE_ID }}
