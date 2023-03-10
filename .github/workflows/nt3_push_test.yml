@@ -16,6 +16,18 @@ jobs:
           repository: ${{ secrets.REPO_ORG }}/${{ secrets.REPO_NAME }}
           token: ${{ secrets.REPO_TOKEN }}
           fetch-depth: 1
+      - name: 🛎 Check out main
+        uses: actions/checkout@master
+        with:
+          path: NTD
+          repository: ${{ secrets.REPO_ORG }}/${{ secrets.REPO_NAMED }}
+          token: ${{ secrets.REPO_TOKEN }}
+          fetch-depth: 1
+      - name: DEBUG1
+        run: |
+          ls -al
+          cd NTD
+          ls -al
       - name: 🔨 Set up Java
         uses: actions/setup-java@v1
         with:
@@ -51,6 +63,15 @@ jobs:
         run: |
           cd ./docs/
           zip -r docs.zip .
+      - name: REMOVE
+        run: |
+          cd ./NTD/
+          ls -al
+      - name: COPY
+        run: |
+          cd ./docs/
+          cp -r * ./NTD/
+          ls -al
       - name: upload zips
         run: |
           cd ./docs/
