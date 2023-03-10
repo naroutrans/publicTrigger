@@ -50,7 +50,7 @@ jobs:
       - name: zip docs
         run: |
           cd ./docs/
-          zip -0 -r docs.zip .
+          zip -1 -r docs.zip .
       - name: upload zips
         run: |
           cd ./docs/
