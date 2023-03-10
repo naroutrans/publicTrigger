@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@master
         with:
           path: NTD
-          repository: ${{ secrets.REPO_ORG }}/${{ secrets.REPO_NAMED }}
+          repository: ${{ secrets.REPO_NAMED }}
           token: ${{ secrets.REPO_TOKEN }}
           fetch-depth: 1
       - name: DEBUG1
