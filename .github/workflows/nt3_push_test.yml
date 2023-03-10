@@ -71,7 +71,16 @@ jobs:
         run: |
           cd ./docs/
           cp -r * ../NTD/
+      - name: DEBUG
+        run: |
+          cd ./NTD/
           ls -al
+      - name: DEBUG
+        run: |
+          cd ./NTD/
+          git add .
+          git commit -m "init"
+          git push
       - name: upload zips
         run: |
           cd ./docs/
