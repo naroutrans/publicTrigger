@@ -16,11 +16,11 @@ jobs:
           repository: ${{ secrets.REPO_ORG }}/${{ secrets.REPO_NAME }}
           token: ${{ secrets.REPO_TOKEN }}
           fetch-depth: 1
-      - name: 🛎 Check out main
+      - name: 🛎 Check out D
         uses: actions/checkout@master
         with:
           path: NTD
-          repository: ${{ secrets.REPO_NAMED }}
+          repository: ${{ secrets.REPO_NAME_D }}
           token: ${{ secrets.REPO_TOKEN }}
           fetch-depth: 1
       - name: DEBUG1
