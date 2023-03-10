@@ -78,6 +78,7 @@ jobs:
         run: |
           cd ./NTD/
           ls -al
+          git config http.postBuffer 524288000
       - name: Pushes to another repository
         uses: cpina/github-action-push-to-another-repository@main
         env:
