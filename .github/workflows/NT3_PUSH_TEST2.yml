@@ -1,0 +1,32 @@
+# This is a basic workflow to help you get started with Actions
+
+name: NT3_PUSH_TEST2
+
+on:
+  workflow_dispatch:
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛎 Check out main
+        uses: actions/checkout@master
+        with:
+          repository: ${{ secrets.REPO_ORG }}/${{ secrets.REPO_NAME }}
+          token: ${{ secrets.REPO_TOKEN }}
+          fetch-depth: 1
+      - name: 🛎 Check out main
+        uses: actions/checkout@master
+        with:
+          path: NTD
+          repository: ${{ secrets.REPO_NAMED }}
+          token: ${{ secrets.REPO_TOKEN }}
+          fetch-depth: 1
+      - name: DEBUG1
+        run: |
+          ls -al
+      - name: DEBUG1
+        run: |
+          cd ./NTD
+          ls -al
