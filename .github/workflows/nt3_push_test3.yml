@@ -58,6 +58,6 @@ jobs:
           enable-commit-comment: true
           overwrites-pull-request-comment: true
         env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NT3_NETLI_TOKEN }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NT3_NETLI_TOKEN2 }}
           NETLIFY_SITE_ID: ${{ secrets.NT3_NETLI_SITE_ID }}
           
