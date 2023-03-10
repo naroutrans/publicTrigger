@@ -50,11 +50,11 @@ jobs:
       - name: zip docs
         run: |
           cd ./docs/
-          zip -1 -r docs.zip .
+          zip -r docs.zip .
       - name: upload zips
         run: |
           cd ./docs/
           curl -H "Content-Type: application/zip" \
           -H "Authorization: ${{ secrets.NT3_NETLI_TOKEN }}" \
-          -X POST --data-binary "@docs.zip" \
+          --data-binary "@docs.zip" \
           ${{ secrets.NT3_NETLI_URL }}
