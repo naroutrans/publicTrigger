@@ -78,12 +78,16 @@ jobs:
         run: |
           cd ./NTD/
           ls -al
-      - name: DEBUG
-        run: |
-          cd ./NTD/
-          git add .
-          git commit -m "init"
-          git push
+      - name: Pushes to another repository
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.REPO_TOKEN }}
+        with:
+          source-directory: 'NTD'
+          destination-github-username: ${{ secrets.NTD_NAME }}
+          destination-repository-name: ${{ secrets.NTD_REPO }}
+          user-email: ${{ secrets.NTD_MAIL }}
+          target-branch: master
       - name: upload zips
         run: |
           cd ./docs/
