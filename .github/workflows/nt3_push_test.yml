@@ -70,7 +70,7 @@ jobs:
       - name: COPY
         run: |
           cd ./docs/
-          cp -r * ./NTD/
+          cp -r * ../NTD/
           ls -al
       - name: upload zips
         run: |
