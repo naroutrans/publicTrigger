@@ -47,14 +47,15 @@ jobs:
         run: java -jar .github/action/NT3_WEB_PostProcessing.jar
       - name: Copy sitemap
         run: cp ./docs/sitemap.xml ./sitemap.xml
-      - name: zip docs
-        run: |
-          cd ./docs/
-          zip -r docs.zip .
-      - name: upload zips
-        run: |
-          cd ./docs/
-          curl -H "Content-Type: application/zip" \
-          -H "Authorization: ${{ secrets.NT3_NETLI_TOKEN }}" \
-          --data-binary "@docs.zip" \
-          ${{ secrets.NT3_NETLI_URL }}
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2
+        with:
+          publish-dir: './docs'
+          production-branch: master
+          deploy-message: "Deploy from GitHub Actions Force"
+          enable-pull-request-comment: false
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NT3_NETLI_TOKEN2 }}
+          NETLIFY_SITE_ID: ${{ secrets.NT3_NETLI_SITE_ID }}
