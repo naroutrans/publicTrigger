@@ -31,7 +31,7 @@ jobs:
       - name: TN
         run: |
           cd NT3_MAIN
-          java -Xms128m -Xmx4g -jar NT3_001_Main.jar TistoryNoti
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar TistoryNotiSele
       - name: HCM
         run: |
           cd NT3_MAIN
