@@ -18,10 +18,6 @@ jobs:
           mkdir NT3_REPO
           7z  x -p${{ secrets.NT3_ZIP_PASS }} bin.7z.001
           ren NT3_MAIN_TEMP NT3_MAIN
-      - name: PGP
-        run: |
-          cd NT3_MAIN
-          java -Xms128m -Xmx4g -jar NT3_001_Main.jar PagesGitPull
       - name: HGP
         run: |
           cd NT3_MAIN
