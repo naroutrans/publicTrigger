@@ -1,0 +1,30 @@
+name: NT3_WATCH_RECORD
+
+on:
+  schedule:
+      - cron:  '10 18 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-2019
+    steps:
+      - name: 🛎 Check out main
+        uses: actions/checkout@master
+        with:
+          repository: ${{ secrets.NT3_MAIN_BIN_PATH }}
+          token: ${{ secrets.NT3_REPO_TOKEN }}
+          fetch-depth: 1
+      - name: make dir set bin
+        run: |
+          mkdir NT3_REPO
+          7z  x -p${{ secrets.NT3_ZIP_PASS }} bin.7z.001
+          ren NT3_MAIN_TEMP NT3_MAIN
+      - name: debug dir
+        run: |
+          cd NT3_MAIN
+          ls
+      - name: WRS
+        run: |
+          cd NT3_MAIN
+          java -Xms128m -Xmx4g -jar NT3_001_Main.jar WatchRecordSite
