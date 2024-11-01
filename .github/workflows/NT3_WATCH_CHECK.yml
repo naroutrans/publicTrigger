@@ -1,4 +1,4 @@
-name: NOT3_WATCH_CHECK
+name: NT3_WATCH_CHECK
 
 on:
   schedule:
